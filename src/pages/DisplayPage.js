@@ -4,11 +4,11 @@ import TravelList from '../components/TravelList'; // 导入 TravelList 组件
 
 function DisplayPage() {
   const [travel, setTravel] = useState(null);
-
+  const API_BASE_URL = 'https://lean-travel-app.avosapps.us'; // 替换为你的后端服务域名
   // 获取最新一条差旅信息
   const fetchTravels = async () => {
     try {
-      const response = await fetch('/api/travels', {
+      const response = await fetch('${API_BASE_URL}/api/travels', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
