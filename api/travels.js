@@ -11,6 +11,10 @@ export default async function handler(req, res) {
     if (id) {
       console.log(`Triggering single record query for ID: ${id}`); // 调试信息
       try {
+
+        console.log('Supabase URL:', process.env.supabase_db_SUPABASE_URL);
+        console.log('Supabase Key:', process.env.supabase_db_NEXT_PUBLIC_SUPABASE_ANON_KEY);
+        
         const { data, error } = await supabase
           .from('travels')
           .select('*')
@@ -35,7 +39,10 @@ export default async function handler(req, res) {
       // 获取所有差旅信息
       try {
         const { data, error } = await supabase.from('travels').select('*');
-
+        
+        console.log('Supabase data:', data);
+        console.log('Supabase error:', error);
+        
         if (error) {
           console.error('Database query failed:', error);
           return res.status(500).json({ error: 'Database query failed', details: error });
