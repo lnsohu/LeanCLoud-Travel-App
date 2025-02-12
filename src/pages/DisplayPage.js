@@ -8,7 +8,7 @@ function DisplayPage() {
   // 获取最新一条差旅信息
   const fetchTravels = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/api/travels', {
+      const response = await fetch(`${API_BASE_URL}/api/travels`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
