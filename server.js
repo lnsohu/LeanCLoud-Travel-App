@@ -21,6 +21,12 @@ app.use(express.static(path.join(__dirname, 'build')));
 // API 路由
 app.use('/api', require('./routes/api'));
 
+// 调试日志：打印所有请求
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
+
 // 前端路由回退到 index.html（支持 React Router）
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
